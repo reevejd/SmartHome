@@ -13,8 +13,125 @@
     tools:context="ca.jamesreeve.smarthome.MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <TextView
+    <ImageView
+        android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        app:srcCompat="@drawable/house"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:id="@+id/light0"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/lightoff"
+        android:layout_marginStart="125dp"
+        android:layout_marginBottom="125dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:id="@+id/light2"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_marginBottom="13dp"
+        android:layout_marginStart="25dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/lightoff"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/light0" />
+
+    <ImageView
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/lightoff"
+        android:id="@+id/light3"
+        android:layout_below="@+id/light1"
+        android:layout_alignStart="@+id/light2"
+        android:layout_marginTop="20dp" />
+
+    <ImageView
+        android:id="@+id/light1"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_alignStart="@+id/light0"
+        android:layout_below="@+id/light6"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/lightoff" />
+
+    <ImageView
+        android:id="@+id/light8"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/lightoff"
+        android:layout_marginTop="29dp"
+        android:layout_below="@+id/light6"
+        android:layout_toEndOf="@+id/light6" />
+
+
+    <ImageView
+        android:id="@+id/light7"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_above="@+id/light6"
+        android:layout_alignStart="@+id/light6"
+        android:layout_marginStart="21dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/lightoff" />
+
+    <ImageView
+        android:id="@+id/light6"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/light4"
+        android:layout_marginStart="26dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/lightoff" />
+
+    <ImageView
+        android:id="@+id/light5"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_alignTop="@+id/light4"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="18dp"
+        android:layout_toEndOf="@+id/light4"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/lightoff" />
+
+    <ImageView
+        android:id="@+id/light4"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/light3"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="83dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/lightoff" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/toggleLights"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:clickable="true"
+        app:fabSize="mini"
+        app:rippleColor="@android:color/background_light"
+        app:srcCompat="@drawable/hidelights" />
 </RelativeLayout>
