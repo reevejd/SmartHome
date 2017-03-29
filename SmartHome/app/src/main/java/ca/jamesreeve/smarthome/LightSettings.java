@@ -10,10 +10,10 @@ import java.sql.Time;
 public class LightSettings {
 
     boolean active;
-    int onH;
-    int onM;
-    int offH;
-    int offM;
+    int onH = 0;
+    int onM = 0;
+    int offH = 0;
+    int offM = 0;
 
     public LightSettings(){
         active = false;
@@ -33,5 +33,19 @@ public class LightSettings {
 
     public boolean isActive(){
         return active;
+    }
+
+    public int[] getOnTime(){
+        int[] onTime = new int[2];
+        onTime[0] = onH;
+        onTime[1] = onM;
+        return onTime;
+    }
+
+    public int[] getOffTime(){
+        int[] offTime = new int[2];
+        offTime[0] = offH;
+        offTime[1] = offM;
+        return offTime;
     }
 }

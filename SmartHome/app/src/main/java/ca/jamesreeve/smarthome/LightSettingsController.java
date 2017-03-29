@@ -23,4 +23,12 @@ public class LightSettingsController {
     public boolean isActive(){
         return lightSettings.isActive();
     }
+
+    public int[] getOnTime(){
+        return lightSettings.getOnTime();
+    }
+
+    public int[] getOffTime(){
+        return lightSettings.getOffTime();
+    }
 }

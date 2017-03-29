@@ -19,6 +19,14 @@ public class LightSettingsActivity extends AppCompatActivity implements View.OnC
         else{
             s.setChecked(false);
         }
+        TimePicker tp = (TimePicker) findViewById(R.id.turnOnTime);
+        TimePicker tp2 = (TimePicker) findViewById(R.id.turnOffTime);
+        int[] onTime = MainActivity.lightSettingsController.getOnTime();
+        int[] offTime = MainActivity.lightSettingsController.getOffTime();
+        tp.setCurrentHour(onTime[0]);
+        tp.setCurrentMinute(onTime[1]);
+        tp2.setCurrentHour(offTime[0]);
+        tp2.setCurrentMinute(offTime[1]);
     }
 
     public void onClick(View v){
@@ -29,8 +37,8 @@ public class LightSettingsActivity extends AppCompatActivity implements View.OnC
             //save settings are active
             int onHour = tp.getCurrentHour();
             int onMinute = tp.getCurrentMinute();
-            int offHour = tp.getCurrentHour();
-            int offMinute = tp.getCurrentMinute();
+            int offHour = tp2.getCurrentHour();
+            int offMinute = tp2.getCurrentMinute();
             MainActivity.lightSettingsController.updateSettings(onHour,onMinute,offHour,offMinute);
         }
         else{
