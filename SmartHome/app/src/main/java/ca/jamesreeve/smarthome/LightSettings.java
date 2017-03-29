@@ -1,13 +1,37 @@
 package ca.jamesreeve.smarthome;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import java.sql.Date;
+import java.sql.Time;
 
-public class LightSettings extends AppCompatActivity {
+/**
+ * Created by Nick on 3/29/2017.
+ */
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_light_settings);
+public class LightSettings {
+
+    boolean active;
+    int onH;
+    int onM;
+    int offH;
+    int offM;
+
+    public LightSettings(){
+        active = false;
+    }
+
+    public void updateSettings(int onH,int onM,int offH,int offM){
+        this.onH = onH;
+        this.onM = onM;
+        this.offH = offH;
+        this.offM = offM;
+        active = true;
+    }
+
+    public void deactivate(){
+        active = false;
+    }
+
+    public boolean isActive(){
+        return active;
     }
 }
