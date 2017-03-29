@@ -3,8 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="ca.jamesreeve.smarthome.MainActivity">
     <item
+        android:id="@+id/LightSettings"
+        android:orderInCategory="100"
+        android:title="Light Settings" />
+    <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
+        android:title="@string/action_settings" />
 </menu>
