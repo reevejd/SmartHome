@@ -1,10 +1,16 @@
 package ca.jamesreeve.smarthome;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 /**
  * Created by Nick on 3/29/2017.
  */
 
 public class Light {
+
+    FirebaseDatabase database;
+    DatabaseReference lightRef;
 
     public enum State{
         ON,OFF
@@ -16,6 +22,12 @@ public class Light {
     public Light(int id){
         state = State.OFF;
         this.id = id;
+
+        FirebaseDatabase.getInstance();
+        lightRef = database.getReference("lights/0");
+        lightRef.setValue("Test!");
+
+
     }
 
     public int getId(){

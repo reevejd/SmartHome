@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "371559816800",
+    "firebase_url": "https://smarthome-5ab9b.firebaseio.com",
+    "project_id": "smarthome-5ab9b",
+    "storage_bucket": "smarthome-5ab9b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:371559816800:android:7f261a37e15bf3c7",
+        "android_client_info": {
+          "package_name": "ca.jamesreeve.smarthome"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "371559816800-0sl69u1r5n2p882ejmk9oiurl22sdan2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ca.jamesreeve.smarthome",
+            "certificate_hash": "f795eb12e525f7ecfd7d432f3193455d66e76f53"
+          }
+        },
+        {
+          "client_id": "371559816800-km8f63di3ml7m9tlncqgl3uqclkp1a2l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMZ45H_E8Di6xl2BYyjJOtcFb56_jHMP4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "371559816800-km8f63di3ml7m9tlncqgl3uqclkp1a2l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
