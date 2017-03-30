@@ -1,13 +1,20 @@
 package ca.jamesreeve.smarthome;
 
+import android.util.Log;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Observable;
 
 /**
  * Created by Nick on 3/29/2017.
  */
 
-public class Light {
+public class Light extends Observable {
 
     FirebaseDatabase database;
     DatabaseReference lightRef;
@@ -20,12 +27,31 @@ public class Light {
     private int id;
 
     public Light(int id){
-        state = State.OFF;
         this.id = id;
 
-        FirebaseDatabase.getInstance();
-        lightRef = database.getReference("lights/0");
-        lightRef.setValue("Test!");
+        database = FirebaseDatabase.getInstance();
+
+        lightRef = database.getReference("lights/"+id);
+        lightRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                state = (((String) dataSnapshot.getValue()).equals("ON") ? State.ON : State.OFF);
+                setChanged();
+                notifyObservers(state);
+                // need to call display method here?
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.e("dberror", "db error in light.java: ");
+                state = State.OFF;
+                lightRef.setValue(state);
+                setChanged();
+                notifyObservers();
+            }
+        });
+
+
 
 
     }
@@ -39,11 +65,9 @@ public class Light {
     }
 
     public void changeState(){
-        if(state == State.ON){
-            state = State.OFF;
-        }
-        else{
-            state = State.ON;
-        }
+        state = (state == State.ON ? state.OFF : state.ON);
+        lightRef.setValue(state);
+        Log.d("test","notifying");
+
     }
 }

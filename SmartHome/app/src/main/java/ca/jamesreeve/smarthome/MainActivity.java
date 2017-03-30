@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ImageView light7;
     ImageView light8;
     ImageView[] lights = new ImageView[9];
-    LightController lightController = new LightController(9);
+    LightController lightController = LightController.buildLightController(9);
 
     boolean lightsHidden = false;
 
