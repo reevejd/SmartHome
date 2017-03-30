@@ -12,9 +12,10 @@ import java.util.Observer;
 public final class LightController implements Observer {
 
     static Light[] lights;
+    MainActivity viewController;
 
-    static final LightController buildLightController(int n) {
-        LightController result = new LightController(n);
+    static final LightController buildLightController(int n, MainActivity viewController) {
+        LightController result = new LightController(n, viewController);
 
         for (Light light: lights) {
             light.addObserver(result);
@@ -24,8 +25,9 @@ public final class LightController implements Observer {
 
     };
 
-    private LightController(int n){
+    private LightController(int n, MainActivity viewController){
         lights = new Light[n];
+        this.viewController = viewController;
         for(int i = 0; i < n; i++){
             Light light = new Light(i);
             lights[i] = light;
@@ -44,6 +46,10 @@ public final class LightController implements Observer {
     public void update(Observable light, Object arg) {
         Log.d("lightchange", "update: light status was changed to"+arg);
         // call display function here?
+        viewController.setLightDisplay(
+                ((Light) light).getId(),
+                ((Light) light).getState()
+        );
     }
 
 

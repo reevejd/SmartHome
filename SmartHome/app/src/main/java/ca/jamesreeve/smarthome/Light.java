@@ -37,7 +37,7 @@ public class Light extends Observable {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 state = (((String) dataSnapshot.getValue()).equals("ON") ? State.ON : State.OFF);
                 setChanged();
-                notifyObservers(state);
+                notifyObservers(this);
                 // need to call display method here?
             }
 
@@ -67,7 +67,6 @@ public class Light extends Observable {
     public void changeState(){
         state = (state == State.ON ? state.OFF : state.ON);
         lightRef.setValue(state);
-        Log.d("test","notifying");
 
     }
 }

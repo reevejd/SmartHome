@@ -22,7 +22,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ImageView light7;
     ImageView light8;
     ImageView[] lights = new ImageView[9];
-    LightController lightController = LightController.buildLightController(9);
+
+    LightController lightController;
 
     boolean lightsHidden = false;
 
@@ -34,6 +35,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        lightController = LightController.buildLightController(9, this);
 
         FloatingActionButton toggleLights = (FloatingActionButton) findViewById(R.id.toggleLights);
         toggleLights.setOnClickListener(new View.OnClickListener() {
@@ -86,6 +89,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 v.setVisibility(View.INVISIBLE);
             }
         }
+    }
+
+    public void setLightDisplay(int index, Light.State state) {
+        lights[index].setImageResource(state == Light.State.ON ? R.drawable.lighton : R.drawable.lightoff);
     }
 
     public void onClick(View v){
