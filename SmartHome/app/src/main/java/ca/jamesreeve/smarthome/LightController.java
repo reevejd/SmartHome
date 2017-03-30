@@ -45,7 +45,8 @@ public final class LightController implements Observer {
     @Override
     public void update(Observable light, Object arg) {
         Log.d("lightchange", "update: light status was changed to"+arg);
-        // call display function here?
+        // LightController observes all instances of Light. When a change is detected,
+        // the view is updated
         viewController.setLightDisplay(
                 ((Light) light).getId(),
                 ((Light) light).getState()

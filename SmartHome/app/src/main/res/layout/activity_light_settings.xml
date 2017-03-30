@@ -71,23 +71,16 @@
             android:scaleY="0.7"
             android:timePickerMode="spinner" />
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignStart="@+id/textView7"
-            android:onClick="onClick"
-            android:text="Save" />
+
 
         <Switch
             android:id="@+id/active"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/button"
-            android:layout_alignBottom="@+id/button"
-            android:layout_toEndOf="@+id/textView7"
             android:checked="true"
-            android:text="Active" />
+            android:text="Active"
+            android:layout_below="@+id/turnOffTime"
+            android:layout_centerHorizontal="true" />
+
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

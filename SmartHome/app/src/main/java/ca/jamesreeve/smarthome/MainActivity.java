@@ -24,10 +24,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ImageView[] lights = new ImageView[9];
 
     LightController lightController;
+    static LightSettingsController lightSettingsController;
 
     boolean lightsHidden = false;
 
-    public static LightSettingsController lightSettingsController = new LightSettingsController();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setSupportActionBar(toolbar);
 
         lightController = LightController.buildLightController(9, this);
+        lightSettingsController = LightSettingsController.buildLightSettingsController();
 
         FloatingActionButton toggleLights = (FloatingActionButton) findViewById(R.id.toggleLights);
         toggleLights.setOnClickListener(new View.OnClickListener() {

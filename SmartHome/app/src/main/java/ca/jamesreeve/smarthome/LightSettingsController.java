@@ -1,19 +1,26 @@
 package ca.jamesreeve.smarthome;
 
+import android.util.Log;
+
+import java.util.Observable;
+import java.util.Observer;
+
 /**
  * Created by Nick on 3/29/2017.
  */
 
 public class LightSettingsController {
 
-    LightSettings lightSettings;
+    static LightSettings lightSettings;
 
-    public LightSettingsController(){
+
+    static final LightSettingsController buildLightSettingsController() {
+        LightSettingsController result = new LightSettingsController();
+        return result;
+    };
+
+    private LightSettingsController(){
         lightSettings = new LightSettings();
-    }
-
-    public void updateSettings(int onH,int onM,int offH,int offM){
-        lightSettings.updateSettings(onH,onM,offH,offM);
     }
 
     public void deactivate(){
@@ -31,4 +38,5 @@ public class LightSettingsController {
     public int[] getOffTime(){
         return lightSettings.getOffTime();
     }
+
 }

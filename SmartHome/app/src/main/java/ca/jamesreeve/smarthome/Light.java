@@ -37,8 +37,7 @@ public class Light extends Observable {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 state = (((String) dataSnapshot.getValue()).equals("ON") ? State.ON : State.OFF);
                 setChanged();
-                notifyObservers(this);
-                // need to call display method here?
+                notifyObservers();
             }
 
             @Override
