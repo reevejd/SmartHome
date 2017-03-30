@@ -3,7 +3,6 @@ package ca.jamesreeve.smarthome;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -26,6 +25,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     LightController lightController = new LightController(9);
 
     boolean lightsHidden = false;
+
+    public static LightSettingsController lightSettingsController = new LightSettingsController();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -192,7 +193,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return true;
         }
         else if(id == R.id.LightSettings){
-            Intent intent = new Intent(this, LightSettings.class);
+            Intent intent = new Intent(this, LightSettingsActivity.class);
             startActivity(intent);
         }
 
