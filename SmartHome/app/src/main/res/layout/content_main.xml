@@ -5,6 +5,7 @@
     android:id="@+id/content_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/background_light"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -17,44 +18,43 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/house"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        app:srcCompat="@drawable/house" />
 
     <ImageView
         android:id="@+id/light0"
         android:layout_width="42dp"
         android:layout_height="42dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="125dp"
+        android:layout_marginStart="125dp"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/lightoff"
-        android:layout_marginStart="125dp"
-        android:layout_marginBottom="125dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
+        app:srcCompat="@drawable/lightoff" />
 
     <ImageView
         android:id="@+id/light2"
         android:layout_width="42dp"
         android:layout_height="42dp"
+        android:layout_alignParentBottom="true"
         android:layout_marginBottom="13dp"
         android:layout_marginStart="25dp"
+        android:layout_toEndOf="@+id/light0"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/lightoff"
-        android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/light0" />
+        app:srcCompat="@drawable/lightoff" />
 
     <ImageView
+        android:id="@+id/light3"
         android:layout_width="42dp"
         android:layout_height="42dp"
+        android:layout_alignStart="@+id/light2"
+        android:layout_below="@+id/light1"
+        android:layout_marginTop="20dp"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/lightoff"
-        android:id="@+id/light3"
-        android:layout_below="@+id/light1"
-        android:layout_alignStart="@+id/light2"
-        android:layout_marginTop="20dp" />
+        app:srcCompat="@drawable/lightoff" />
 
     <ImageView
         android:id="@+id/light1"
@@ -70,12 +70,12 @@
         android:id="@+id/light8"
         android:layout_width="42dp"
         android:layout_height="42dp"
+        android:layout_below="@+id/light6"
+        android:layout_marginTop="29dp"
+        android:layout_toEndOf="@+id/light6"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/lightoff"
-        android:layout_marginTop="29dp"
-        android:layout_below="@+id/light6"
-        android:layout_toEndOf="@+id/light6" />
+        app:srcCompat="@drawable/lightoff" />
 
 
     <ImageView
@@ -128,10 +128,65 @@
         android:id="@+id/toggleLights"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
         android:clickable="true"
+        app:backgroundTint="@android:color/holo_blue_light"
+        app:elevation="0dp"
         app:fabSize="mini"
         app:rippleColor="@android:color/background_light"
-        app:srcCompat="@drawable/hidelights" />
+        app:srcCompat="@drawable/lightbulbon"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/toggleDoors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:backgroundTint="@android:color/holo_blue_light"
+        app:elevation="0dp"
+        app:fabSize="mini"
+        app:rippleColor="@android:color/background_light"
+        app:srcCompat="@drawable/locked"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/door3" />
+
+    <ImageView
+        android:id="@+id/door0"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_above="@+id/light0"
+        android:layout_toEndOf="@+id/light0"
+        app:srcCompat="@drawable/locked" />
+
+    <ImageView
+        android:id="@+id/door1"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/light5"
+        app:srcCompat="@drawable/locked" />
+
+    <ImageView
+        android:id="@+id/door2"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_above="@+id/door4"
+        android:layout_alignEnd="@+id/light1"
+        app:srcCompat="@drawable/locked" />
+
+    <ImageView
+        android:id="@+id/door4"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_below="@+id/light7"
+        android:layout_toEndOf="@+id/light7"
+        app:srcCompat="@drawable/locked" />
+
+    <ImageView
+        android:id="@+id/door3"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignBottom="@+id/light3"
+        android:layout_alignStart="@+id/light7"
+        app:srcCompat="@drawable/locked" />
 </RelativeLayout>
