@@ -7,7 +7,11 @@
         android:orderInCategory="100"
         android:title="Light Settings" />
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/DoorSettings"
         android:orderInCategory="100"
+        android:title="Door Settings" />
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="101"
         android:title="@string/action_settings" />
 </menu>

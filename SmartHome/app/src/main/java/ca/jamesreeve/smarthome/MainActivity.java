@@ -299,6 +299,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent intent = new Intent(this, LightSettingsActivity.class);
             startActivity(intent);
         }
+        else if(id == R.id.DoorSettings){
+            Intent intent = new Intent(this, DoorSettingsActivity.class);
+            startActivity(intent);
+        }
 
         return super.onOptionsItemSelected(item);
     }
