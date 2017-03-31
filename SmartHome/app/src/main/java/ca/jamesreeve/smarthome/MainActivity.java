@@ -143,134 +143,134 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     public void setLightDisplay(int index, Light.State state) {
-        lights[index].setImageResource(state == Light.State.ON ? R.drawable.lighton : R.drawable.lightoff);
+        lights[index].setImageResource(state == Light.State.ON ? R.drawable.circleon : R.drawable.circleoff);
     }
 
     public void onClick(View v){
         switch (v.getId()){
             case R.id.light0:
                 if(lightController.getState(0) == Light.State.ON) {
-                    light0.setImageResource(R.drawable.lightoff);
+                    light0.setImageResource(R.drawable.circleoff);
                 }
                 else{
-                    light0.setImageResource(R.drawable.lighton);
+                    light0.setImageResource(R.drawable.circleon);
                 }
                 lightController.changeState(0);
                 break;
             case R.id.light1:
                 if(lightController.getState(1) == Light.State.ON) {
-                    light1.setImageResource(R.drawable.lightoff);
+                    light1.setImageResource(R.drawable.circleoff);
                 }
                 else{
-                    light1.setImageResource(R.drawable.lighton);
+                    light1.setImageResource(R.drawable.circleon);
                 }
                 lightController.changeState(1);
                 break;
             case R.id.light2:
                 if(lightController.getState(2) == Light.State.ON) {
-                    light2.setImageResource(R.drawable.lightoff);
+                    light2.setImageResource(R.drawable.circleoff);
                 }
                 else{
-                    light2.setImageResource(R.drawable.lighton);
+                    light2.setImageResource(R.drawable.circleon);
                 }
                 lightController.changeState(2);
                 break;
             case R.id.light3:
                 if(lightController.getState(3) == Light.State.ON) {
-                    light3.setImageResource(R.drawable.lightoff);
+                    light3.setImageResource(R.drawable.circleoff);
                 }
                 else{
-                    light3.setImageResource(R.drawable.lighton);
+                    light3.setImageResource(R.drawable.circleon);
                 }
                 lightController.changeState(3);
                 break;
             case R.id.light4:
                 if(lightController.getState(4) == Light.State.ON) {
-                    light4.setImageResource(R.drawable.lightoff);
+                    light4.setImageResource(R.drawable.circleoff);
                 }
                 else{
-                    light4.setImageResource(R.drawable.lighton);
+                    light4.setImageResource(R.drawable.circleon);
                 }
                 lightController.changeState(4);
                 break;
             case R.id.light5:
                 if(lightController.getState(5) == Light.State.ON) {
-                    light5.setImageResource(R.drawable.lightoff);
+                    light5.setImageResource(R.drawable.circleoff);
                 }
                 else{
-                    light5.setImageResource(R.drawable.lighton);
+                    light5.setImageResource(R.drawable.circleon);
                 }
                 lightController.changeState(5);
                 break;
             case R.id.light6:
                 if(lightController.getState(6) == Light.State.ON) {
-                    light6.setImageResource(R.drawable.lightoff);
+                    light6.setImageResource(R.drawable.circleoff);
                 }
                 else{
-                    light6.setImageResource(R.drawable.lighton);
+                    light6.setImageResource(R.drawable.circleon);
                 }
                 lightController.changeState(6);
                 break;
             case R.id.light7:
                 if(lightController.getState(7) == Light.State.ON) {
-                    light7.setImageResource(R.drawable.lightoff);
+                    light7.setImageResource(R.drawable.circleoff);
                 }
                 else{
-                    light7.setImageResource(R.drawable.lighton);
+                    light7.setImageResource(R.drawable.circleon);
                 }
                 lightController.changeState(7);
                 break;
             case R.id.light8:
                 if(lightController.getState(8) == Light.State.ON) {
-                    light8.setImageResource(R.drawable.lightoff);
+                    light8.setImageResource(R.drawable.circleoff);
                 }
                 else{
-                    light8.setImageResource(R.drawable.lighton);
+                    light8.setImageResource(R.drawable.circleon);
                 }
                 lightController.changeState(8);
                 break;
             case R.id.door0:
                 if(doorController.getState(0) == Door.State.LOCKED){
-                    door0.setImageResource(R.drawable.unlocked);
+                    door0.setImageResource(R.drawable.unlockedcircle);
                 }
                 else{
-                    door0.setImageResource(R.drawable.locked);
+                    door0.setImageResource(R.drawable.lockedcircle);
                 }
                 doorController.changeState(0);
                 break;
             case R.id.door1:
                 if(doorController.getState(1) == Door.State.LOCKED){
-                    door1.setImageResource(R.drawable.unlocked);
+                    door1.setImageResource(R.drawable.unlockedcircle);
                 }
                 else{
-                    door1.setImageResource(R.drawable.locked);
+                    door1.setImageResource(R.drawable.lockedcircle);
                 }
                 doorController.changeState(1);
                 break;
             case R.id.door2:
                 if(doorController.getState(2) == Door.State.LOCKED){
-                    door2.setImageResource(R.drawable.unlocked);
+                    door2.setImageResource(R.drawable.unlockedcircle);
                 }
                 else{
-                    door2.setImageResource(R.drawable.locked);
+                    door2.setImageResource(R.drawable.lockedcircle);
                 }
                 doorController.changeState(2);
                 break;
             case R.id.door3:
                 if(doorController.getState(3) == Door.State.LOCKED){
-                    door3.setImageResource(R.drawable.unlocked);
+                    door3.setImageResource(R.drawable.unlockedcircle);
                 }
                 else{
-                    door3.setImageResource(R.drawable.locked);
+                    door3.setImageResource(R.drawable.lockedcircle);
                 }
                 doorController.changeState(3);
                 break;
             case R.id.door4:
                 if(doorController.getState(4) == Door.State.LOCKED){
-                    door4.setImageResource(R.drawable.unlocked);
+                    door4.setImageResource(R.drawable.unlockedcircle);
                 }
                 else{
-                    door4.setImageResource(R.drawable.locked);
+                    door4.setImageResource(R.drawable.lockedcircle);
                 }
                 doorController.changeState(4);
                 break;
