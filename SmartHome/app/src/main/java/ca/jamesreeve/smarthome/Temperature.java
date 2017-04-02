@@ -29,7 +29,9 @@ public class Temperature extends Observable {
         tempRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                value = ((Double) dataSnapshot.getValue());
+                Log.d("thermostat", "setting in entity");
+
+                value = ((Number) dataSnapshot.getValue()).doubleValue();
                 setChanged();
                 notifyObservers();
             }
@@ -47,5 +49,6 @@ public class Temperature extends Observable {
 
     public void setValue(double value) {
         this.value = value;
+        tempRef.setValue(value);
     }
 }

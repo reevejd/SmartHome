@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ImageView[] lights = new ImageView[9];
 
     LightController lightController;
+    TemperatureController temperatureController;
     static LightSettingsController lightSettingsController;
 
     boolean lightsHidden = false;
@@ -38,6 +39,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         lightController = LightController.buildLightController(9, this);
         lightSettingsController = LightSettingsController.buildLightSettingsController();
+
+        //temperatureController = TemperatureController.buildTemperatureController(this);
 
         FloatingActionButton toggleLights = (FloatingActionButton) findViewById(R.id.toggleLights);
         toggleLights.setOnClickListener(new View.OnClickListener() {
@@ -198,6 +201,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            //temperatureController.setThermostat(40);
+
             return true;
         }
         else if(id == R.id.LightSettings){
