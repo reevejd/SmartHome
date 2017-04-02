@@ -21,10 +21,11 @@ public class TemperatureController implements Observer{
     static final TemperatureController buildTemperatureController(MainActivity viewController) {
         TemperatureController result = new TemperatureController(viewController);
         temperature.addObserver(result);
+        /*
         thermostat = new ThermostatProcess(temperature);
         thermostatThread = new Thread(thermostat);
         thermostatThread.start();
-
+*/
 
         return result;
 

@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ca.jamesreeve.smarthome.LightSettingsActivity"
-    tools:layout_editor_absoluteY="81dp"
-    tools:layout_editor_absoluteX="0dp">
+    tools:context="ca.jamesreeve.smarthome.DoorSettingsActivity">
 
     <RelativeLayout
         android:layout_width="368dp"
@@ -20,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/lockTime"
             android:layout_alignStart="@+id/textView8"
-            android:text="Turn Lights Off:"
+            android:text="Unlock Doors"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textSize="15sp" />
 
@@ -31,7 +29,7 @@
             android:layout_alignStart="@+id/textView6"
             android:layout_below="@+id/textView6"
             android:layout_marginTop="12dp"
-            android:text="Turn Lights On:"
+            android:text="Lock Doors"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textSize="15sp" />
 
@@ -43,7 +41,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="24dp"
             android:layout_marginTop="17dp"
-            android:text="Light Settings"
+            android:text="Door Settings"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textSize="20sp" />
 
@@ -51,13 +49,13 @@
             android:id="@+id/lockTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/textView6"
+            android:layout_centerHorizontal="true"
             android:layout_marginLeft="-30dp"
             android:layout_marginRight="-30dp"
             android:scaleX="0.7"
             android:scaleY="0.7"
-            android:timePickerMode="spinner"
-            android:layout_below="@+id/textView6"
-            android:layout_centerHorizontal="true" />
+            android:timePickerMode="spinner" />
 
         <TimePicker
             android:id="@+id/unlockTime"
@@ -72,15 +70,15 @@
             android:timePickerMode="spinner" />
 
 
-
         <Switch
             android:id="@+id/active"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="Active"
             android:layout_below="@+id/unlockTime"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:checked="true"
+            android:text="Active" />
 
     </RelativeLayout>
+
 </android.support.constraint.ConstraintLayout>

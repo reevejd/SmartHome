@@ -13,7 +13,6 @@ public class LightSettingsController {
 
     static LightSettings lightSettings;
 
-
     static final LightSettingsController buildLightSettingsController() {
         LightSettingsController result = new LightSettingsController();
         return result;
