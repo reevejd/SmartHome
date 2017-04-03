@@ -40,6 +40,7 @@ public class TemperatureController implements Observer{
     public void update(Observable temperature, Object arg) {
         Log.d("temp", "update function called within temperaturecontroller");
         // update temp display
+        viewController.setTemperatureDisplay(((Temperature) temperature).getValue());
     }
 
     public void setThermostat(final double target) {

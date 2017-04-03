@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -30,12 +31,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ImageView door4;
     ImageView[] doors = new ImageView[5];
 
+    TextView tempdisplay;
+
     LightController lightController;
+    static LightSettingsController lightSettingsController;
+
 
     TemperatureController temperatureController;
 
     DoorController doorController;
-    static LightSettingsController lightSettingsController;
+    static DoorSettingsController doorSettingsController;
 
     boolean lightsHidden = false;
     boolean doorsHidden = false;
@@ -47,11 +52,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
         lightController = LightController.buildLightController(9, this);
         lightSettingsController = LightSettingsController.buildLightSettingsController();
+
         temperatureController = TemperatureController.buildTemperatureController(this);
 
         doorController = DoorController.buildDoorController(5, this);
+        doorSettingsController = DoorSettingsController.buildDoorSettingsController();
+
 
         FloatingActionButton toggleLights = (FloatingActionButton) findViewById(R.id.toggleLights);
         toggleLights.setOnClickListener(new View.OnClickListener() {
@@ -68,6 +77,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 toggleDoors();
             }
         });
+
+        tempdisplay = (TextView) findViewById(R.id.tempdisplay);
 
         light0 = (ImageView) findViewById(R.id.light0);
         light0.setOnClickListener(this);
@@ -113,6 +124,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         doors[2] = door2;
         doors[3] = door3;
         doors[4] = door4;
+
     }
 
     public void toggleLights(){
@@ -152,6 +164,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void setDoorDisplay(int index, Door.State state) {
         doors[index].setImageResource(state == Door.State.LOCKED ? R.drawable.lockedcircle : R.drawable.unlockedcircle);
+    }
+
+    public void setTemperatureDisplay(double value) {
+        tempdisplay.setText(value + " C");
     }
 
     public void onClick(View v){

@@ -170,4 +170,13 @@
         android:layout_alignTop="@+id/light4"
         android:layout_toEndOf="@+id/toggleDoors" />
 
+    <TextView
+        android:id="@+id/tempdisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:textSize="12sp"
+        android:text="25 C" />
+
 </RelativeLayout>
