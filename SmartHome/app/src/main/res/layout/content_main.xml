@@ -18,9 +18,9 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        app:srcCompat="@drawable/house" />
+        app:srcCompat="@drawable/house"
+        android:layout_alignBottom="@+id/light1"
+        android:layout_alignEnd="@+id/light7" />
 
 
     <android.support.design.widget.FloatingActionButton
@@ -174,9 +174,19 @@
         android:id="@+id/tempdisplay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:textSize="12sp"
-        android:text="25 C" />
+        android:text="25°C"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/door4" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tempdisplay"
+        app:srcCompat="@drawable/thermometer"
+        android:layout_above="@+id/light5"
+        android:layout_alignEnd="@+id/tempdisplay" />
 
 </RelativeLayout>
