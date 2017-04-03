@@ -68,4 +68,15 @@ public class Light extends Observable {
         lightRef.setValue(state);
 
     }
+
+    public void turnOn(){
+        state = State.ON;
+        lightRef.setValue(state);
+    }
+
+    public void turnOff(){
+        state = State.OFF;
+        lightRef.setValue(state);
+    }
+
 }

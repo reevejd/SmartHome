@@ -52,7 +52,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
         lightController = LightController.buildLightController(9, this);
         lightSettingsController = LightSettingsController.buildLightSettingsController();
 
@@ -61,6 +60,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         doorController = DoorController.buildDoorController(5, this);
         doorSettingsController = DoorSettingsController.buildDoorSettingsController();
 
+        startService(new Intent(this,LightSettingsService.class));
 
         FloatingActionButton toggleLights = (FloatingActionButton) findViewById(R.id.toggleLights);
         toggleLights.setOnClickListener(new View.OnClickListener() {

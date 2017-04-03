@@ -28,7 +28,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".DoorSettingsActivity"
+        <activity
+            android:name=".DoorSettingsActivity"
             android:parentActivityName=".MainActivity">
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
@@ -36,6 +37,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
+
+        <service
+            android:name=".LightSettingsService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>
