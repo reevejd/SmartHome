@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -299,6 +300,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 doorController.changeState(4);
                 break;
         }
+    }
+
+    public void displayEmergency(View v){
+        Toast.makeText(this, "Emergency Services Notified", Toast.LENGTH_LONG).show();
     }
 
     @Override

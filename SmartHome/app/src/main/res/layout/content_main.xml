@@ -189,4 +189,14 @@
         android:layout_above="@+id/light5"
         android:layout_alignEnd="@+id/tempdisplay" />
 
+    <Button
+        android:id="@+id/button2"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="displayEmergency"
+        android:text="Emergency"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
+
 </RelativeLayout>
