@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -240,6 +241,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void setDoorDisplay(int index, Door.State state) {
         doors[index].setImageResource(state == Door.State.LOCKED ? R.drawable.lockedcircle : R.drawable.unlockedcircle);
+    }
+
+    public void showTempSettings(View v){
+        Log.d("temp","open menu");
+
     }
 
     public void setTemperatureDisplay(double value) {

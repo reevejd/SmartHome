@@ -41,7 +41,9 @@
         <service
             android:name=".LightSettingsService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
+
+        <activity android:name=".TemperatureSettings"></activity>
     </application>
 
 </manifest>
