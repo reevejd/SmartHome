@@ -1,6 +1,7 @@
 package ca.jamesreeve.smarthome;
 
 import android.content.Intent;
+import android.icu.text.DecimalFormat;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -242,7 +243,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void setTemperatureDisplay(double value) {
-        tempdisplay.setText(value + " C");
+
+        tempdisplay.setText(String.format("%.1f "+(char) 0x00B0+"C", value));
     }
 
     public void onClick(View v){
