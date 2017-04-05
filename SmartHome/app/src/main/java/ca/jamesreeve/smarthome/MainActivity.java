@@ -258,34 +258,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tempdisplay.setText(String.format("%.1f "+(char) 0x00B0+"C", value));
     }
 
-    SeekBar sb;
-    TextView valuetxt;
-
-    protected void OnCreate(Bundle savedInstanceState){
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_temperature_settings);
-
-        sb = (SeekBar) findViewById(R.id.seekBar);
-        valuetxt = (TextView) findViewById(R.id.value);
-
-        sb.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar sb, int progress, boolean fromUser) {
-                valuetxt.setText(String.valueOf(progress));
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar sb) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar sb) {
-
-            }
-        });
-    }
-
     public void onClick(View v){
         switch (v.getId()){
             case R.id.light0:
