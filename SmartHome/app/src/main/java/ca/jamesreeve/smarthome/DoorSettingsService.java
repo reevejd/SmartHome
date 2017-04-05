@@ -3,14 +3,14 @@ package ca.jamesreeve.smarthome;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
-import android.os.SystemClock;
 import android.util.Log;
+
 import java.sql.Time;
 
-public class LightSettingsService extends Service {
+public class DoorSettingsService extends Service {
 
-    int onTime[];
-    int offTime[];
+    int lockTime[];
+    int unlockTime[];
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -21,9 +21,9 @@ public class LightSettingsService extends Service {
     @Override
     public void onStart(Intent intent, int startId){
         super.onStart(intent, startId);
-        Log.d("LOG","Light settings service started");
-        onTime = LightSettingsController.lightSettings.getOnTime();
-        offTime = LightSettingsController.lightSettings.getOffTime();
+        Log.d("LOG","Door settings service started");
+        lockTime = DoorSettingsController.doorSettings.getLockTime();
+        unlockTime = DoorSettingsController.doorSettings.getUnlockTime();
 
         new Thread(new Runnable(){
             @Override
@@ -31,31 +31,31 @@ public class LightSettingsService extends Service {
                 while(true){
                     try {
                         Thread.sleep(10000);
-                        if(LightSettingsController.lightSettings.isActive()) {
+                        if(DoorSettingsController.doorSettings.isActive()) {
                             int hours = new Time(System.currentTimeMillis()).getHours();
                             int minutes = new Time(System.currentTimeMillis()).getMinutes();
                             Log.d("CURRENT TIME", Integer.toString(hours) + " " + Integer.toString(minutes));
 
-                            onTime = LightSettingsController.lightSettings.getOnTime();
-                            offTime = LightSettingsController.lightSettings.getOffTime();
-                            Log.d("ON TIME", Integer.toString(onTime[0]) + " " + Integer.toString(onTime[1]));
-                            Log.d("OFF TIME", Integer.toString(offTime[0]) + " " + Integer.toString(offTime[1]));
+                            lockTime = DoorSettingsController.doorSettings.getLockTime();
+                            unlockTime = DoorSettingsController.doorSettings.getUnlockTime();
+                            Log.d("ON TIME", Integer.toString(lockTime[0]) + " " + Integer.toString(lockTime[1]));
+                            Log.d("OFF TIME", Integer.toString(unlockTime[0]) + " " + Integer.toString(unlockTime[1]));
 
-                            //turn on
-                            if (hours == onTime[0] && minutes == onTime[1]) {
-                                for (Light l : LightController.lights) {
-                                    l.turnOn();
+                            //lock doors
+                            if (hours == lockTime[0] && minutes == lockTime[1]) {
+                                for (Door d : DoorController.doors) {
+                                    d.lock();
                                 }
                             }
                             //turn off
-                            if (hours == offTime[0] && minutes == offTime[1]) {
-                                for (Light l : LightController.lights) {
-                                    l.turnOff();
+                            if (hours == unlockTime[0] && minutes == unlockTime[1]) {
+                                for (Door d : DoorController.doors) {
+                                    d.unlock();
                                 }
                             }
                         }
                         else{
-                            Log.d("ALERT","Light settings are inactive");
+                            Log.d("ALERT","Door settings are inactive");
                         }
 
                     } catch (InterruptedException e) {
@@ -70,6 +70,6 @@ public class LightSettingsService extends Service {
     @Override
     public void onDestroy(){
         super.onDestroy();
-        Log.d("LOG","Light settings service destroyed");
+        Log.d("LOG","Door settings service destroyed");
     }
 }

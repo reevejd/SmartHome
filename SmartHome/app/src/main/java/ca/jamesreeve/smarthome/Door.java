@@ -66,4 +66,14 @@ public class Door extends Observable {
         doorRef.setValue(state);
     }
 
+    public void lock(){
+        state = State.LOCKED;
+        doorRef.setValue(state);
+    }
+
+    public void unlock(){
+        state = State.UNLOCKED;
+        doorRef.setValue(state);
+    }
+
 }
