@@ -60,8 +60,14 @@ public class EmergencyState extends Observable {
                 Log.d("emergency", "countdown listener function called");
 
                 emergencyCountdown = ((Number) dataSnapshot.getValue()).intValue();
-                setChanged();
-                notifyObservers("countdown");
+                if (emergencyCountdown == 0 && active) {
+                    setChanged();
+                    notifyObservers("finished");
+                } else {
+                    setChanged();
+                    notifyObservers("countdown");
+                }
+
             }
 
             @Override
@@ -114,7 +120,4 @@ public class EmergencyState extends Observable {
         emergencyCountdownRef.setValue(emergencyCountdown);
     }
 
-    /*public boolean isAcknowledged() {
-        return acknowledged;
-    }*/
 }
