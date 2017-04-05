@@ -426,14 +426,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
+        /*//noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             // for debugging // TODO: 4/4/2017
             temperatureController.setThermostat(40);
 
             return true;
-        }
-        else if(id == R.id.LightSettings){
+        }*/
+        if(id == R.id.LightSettings){
             Intent intent = new Intent(this, LightSettingsActivity.class);
             startActivity(intent);
         }
