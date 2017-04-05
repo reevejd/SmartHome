@@ -41,6 +41,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     LightController lightController;
     static LightSettingsController lightSettingsController;
 
+    EmergencyController emergencyController;
+
 
     TemperatureController temperatureController;
 
@@ -68,6 +70,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         doorController = DoorController.buildDoorController(5, this);
         doorSettingsController = DoorSettingsController.buildDoorSettingsController();
+
+        emergencyController = EmergencyController.buildEmergencyController(this);
 
         startService(new Intent(this,LightSettingsService.class));
 
@@ -372,8 +376,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    public void displayEmergency(View v){
-        Toast.makeText(this, "Emergency Services Notified", Toast.LENGTH_LONG).show();
+    public void handleEmergency(View v) {
+        emergencyController.beginEmergency();
+    }
+
+    public void displayEmergency(){
+        Toast.makeText(this, "Emergency Services Dispatched", Toast.LENGTH_LONG).show();
+    }
+
+    public void displayRepeatedEmergency(){
+        Toast.makeText(this, "Emergency Services Already Dispatched", Toast.LENGTH_LONG).show();
+    }
+
+    public void updateEmergencySeconds() {
+        // todo
     }
 
     @Override
@@ -392,6 +408,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            // for debugging // TODO: 4/4/2017
             temperatureController.setThermostat(40);
 
             return true;

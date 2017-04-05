@@ -86,7 +86,7 @@
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="displayEmergency"
+        android:onClick="handleEmergency"
         android:text="Emergency"
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@id/toggleLights"
@@ -231,7 +231,6 @@
         app:srcCompat="@drawable/thermometer"
         android:layout_above="@+id/light5"
         android:layout_alignEnd="@+id/tempdisplay" />
-
 
 
 </RelativeLayout>
