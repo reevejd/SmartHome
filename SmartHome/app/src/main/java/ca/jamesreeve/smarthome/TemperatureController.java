@@ -21,11 +21,11 @@ public class TemperatureController implements Observer{
     static final TemperatureController buildTemperatureController(MainActivity viewController) {
         TemperatureController result = new TemperatureController(viewController);
         temperature.addObserver(result);
-        /*
+
         thermostat = new ThermostatProcess(temperature);
         thermostatThread = new Thread(thermostat);
         thermostatThread.start();
-*/
+
 
         return result;
 
@@ -48,7 +48,9 @@ public class TemperatureController implements Observer{
         // need some delays here
         //temperature.setValue(75);
         Log.d("thermostat", "contval : "+temperature.getValue());
-        thermostat.setTarget(target);
+        temperature.setTarget(target);
+
+        //thermostat.setTarget(target);
         //ThermostatProcess thermo = new ThermostatProcess(temperature, target);
         //thermo.execute();
     }
