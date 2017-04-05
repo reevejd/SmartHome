@@ -18,9 +18,7 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/house"
-        android:layout_alignBottom="@+id/light1"
-        android:layout_alignEnd="@+id/light7" />
+        app:srcCompat="@drawable/house" />
 
 
     <android.support.design.widget.FloatingActionButton
@@ -118,8 +116,9 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         app:srcCompat="@drawable/circleoff"
-        android:layout_alignTop="@+id/toggleDoors"
-        android:layout_toEndOf="@+id/door0" />
+        android:layout_alignBottom="@+id/toggleEmergency"
+        android:layout_toEndOf="@+id/door0"
+        android:layout_marginBottom="28dp" />
 
     <ImageView
         android:id="@+id/light2"
