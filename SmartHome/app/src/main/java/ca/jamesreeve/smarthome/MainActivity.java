@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,6 +36,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView tempdisplay;
     ImageView tempicon;
 
+    Button emergencybutton;
+
     LightController lightController;
     static LightSettingsController lightSettingsController;
 
@@ -47,6 +50,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     boolean lightsHidden = false;
     boolean doorsHidden = false;
     boolean tempHidden = false;
+    boolean emergencyHidden = false;
+
+    FloatingActionButton toggleLights, toggleDoors, toggleTemp, toggleEmergency;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         startService(new Intent(this,LightSettingsService.class));
 
-        FloatingActionButton toggleLights = (FloatingActionButton) findViewById(R.id.toggleLights);
+        toggleLights = (FloatingActionButton) findViewById(R.id.toggleLights);
         toggleLights.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-        FloatingActionButton toggleDoors = (FloatingActionButton) findViewById(R.id.toggleDoors);
+        toggleDoors = (FloatingActionButton) findViewById(R.id.toggleDoors);
         toggleDoors.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -81,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-        FloatingActionButton toggleTemp = (FloatingActionButton) findViewById(R.id.toggleTemp);
+        toggleTemp = (FloatingActionButton) findViewById(R.id.toggleTemp);
         toggleTemp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -89,10 +95,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
+        toggleEmergency = (FloatingActionButton) findViewById(R.id.toggleEmergency);
+        toggleEmergency.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toggleEmergency();
+            }
+        });
+
 
 
         tempdisplay = (TextView) findViewById(R.id.tempdisplay);
         tempicon = (ImageView) findViewById(R.id.tempicon);
+
+        emergencybutton = (Button) findViewById(R.id.emergencybutton);
 
         light0 = (ImageView) findViewById(R.id.light0);
         light0.setOnClickListener(this);
@@ -141,18 +157,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    private void setTranslucent(FloatingActionButton button, boolean setTranslucent) {
+        button.setAlpha(setTranslucent ? ((float) 0.25) : ((float) 1.0));
+    }
+
     public void toggleLights(){
         if(lightsHidden == true){
             lightsHidden = false;
             for(ImageView v : lights){
                 v.setVisibility(View.VISIBLE);
             }
+            setTranslucent(toggleLights, false);
         }
         else{
             lightsHidden = true;
             for(ImageView v : lights){
                 v.setVisibility(View.INVISIBLE);
             }
+            setTranslucent(toggleLights, true);
         }
     }
 
@@ -162,27 +184,47 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             for(ImageView v : doors){
                 v.setVisibility(View.VISIBLE);
             }
+            setTranslucent(toggleDoors, false);
         }
         else{
             doorsHidden = true;
             for(ImageView v : doors){
                 v.setVisibility(View.INVISIBLE);
             }
+            setTranslucent(toggleDoors, true);
         }
     }
 
     public void toggleTemp(){
         if(tempHidden == true){
+
             tempHidden = false;
             tempdisplay.setVisibility(View.VISIBLE);
             tempicon.setVisibility(View.VISIBLE);
+            setTranslucent(toggleTemp, false);
         }
         else{
             tempHidden = true;
             tempdisplay.setVisibility(View.INVISIBLE);
             tempicon.setVisibility(View.INVISIBLE);
+            setTranslucent(toggleTemp, true);
         }
     }
+
+    public void toggleEmergency(){
+        if(emergencyHidden == true){
+            emergencyHidden = false;
+            emergencybutton.setVisibility(View.VISIBLE);
+            setTranslucent(toggleEmergency, false);
+        }
+        else{
+            emergencyHidden = true;
+            emergencybutton.setVisibility(View.INVISIBLE);
+            setTranslucent(toggleEmergency, true);
+        }
+    }
+
+
 
 
 

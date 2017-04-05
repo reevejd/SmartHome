@@ -46,7 +46,7 @@
         app:fabSize="mini"
         app:rippleColor="@android:color/background_light"
         app:srcCompat="@drawable/locked"
-        android:layout_marginStart="11dp"
+        android:layout_marginStart="5dp"
         android:layout_alignParentBottom="true"
         android:layout_toEndOf="@+id/toggleLights"
         android:layout_marginBottom="11dp" />
@@ -61,9 +61,37 @@
         app:fabSize="mini"
         app:rippleColor="@android:color/background_light"
         app:srcCompat="@drawable/thermometer"
-        android:layout_marginStart="11dp"
+        android:layout_marginStart="5dp"
         android:layout_alignParentBottom="true"
         android:layout_toEndOf="@+id/toggleDoors"
+        android:layout_marginBottom="11dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/toggleEmergency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:backgroundTint="@android:color/holo_blue_light"
+        app:elevation="0dp"
+        app:fabSize="mini"
+        app:rippleColor="@android:color/background_light"
+        app:srcCompat="@drawable/emergency"
+        android:layout_marginStart="5dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/toggleTemp"
+        android:layout_marginBottom="11dp" />
+
+    <Button
+        android:id="@+id/emergencybutton"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="displayEmergency"
+        android:text="Emergency"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@id/toggleLights"
+        android:layout_alignBottom="@id/toggleLights"
+        android:layout_alignParentBottom="true"
         android:layout_marginBottom="11dp" />
 
     <ImageView
@@ -204,14 +232,6 @@
         android:layout_above="@+id/light5"
         android:layout_alignEnd="@+id/tempdisplay" />
 
-    <Button
-        android:id="@+id/button2"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="displayEmergency"
-        android:text="Emergency"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true" />
+
 
 </RelativeLayout>
