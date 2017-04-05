@@ -52,7 +52,12 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".TemperatureSettings"></activity>
+        <activity android:name=".TemperatureSettings" />
+
+        <service
+            android:name=".DoorSettingsService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

@@ -17,10 +17,11 @@ public class EmergencyCountdownProcess implements Runnable {
     public void run() {
         while (true) {
             if (emergencyState.simulationActive()) {
-                Log.d("timer", ""+ emergencyState.getEmergencyCountdown());
+                Log.d("emergency", ""+ emergencyState.getEmergencyCountdown());
                 if (emergencyState.getEmergencyCountdown() == 0) {
                     emergencyState.deactivateSimulation();
                     emergencyState.setInactive();
+
                 } else {
                     emergencyState.decrementTimer();
                 }

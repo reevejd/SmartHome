@@ -13,10 +13,16 @@ public class EmergencyController implements Observer{
 
     MainActivity viewController;
     static EmergencyState emergencyState;
+    static EmergencyCountdownProcess emergencyCountdownProcess;
+    static Thread emergencyCountdownThread;
 
     public static EmergencyController buildEmergencyController(MainActivity viewController) {
         EmergencyController result = new EmergencyController(viewController);
         emergencyState.addObserver(result);
+        emergencyCountdownProcess = new EmergencyCountdownProcess(emergencyState);
+        new Thread(emergencyCountdownProcess).start();
+
+
         return result;
 
     }
@@ -32,6 +38,7 @@ public class EmergencyController implements Observer{
             viewController.displayRepeatedEmergency();
         } else {
             emergencyState.activate();
+            Log.d("emergency", "emergency activated");
         }
 
     }
@@ -41,9 +48,10 @@ public class EmergencyController implements Observer{
         EmergencyState emerg = (EmergencyState) obs;
         if (arg.equals("start")) {
             viewController.displayEmergency();
-        } /* todo
-        else if (arg.equals("countdown")) {
-            viewController.updateEmergencySeconds();
-        }*/
+        } else if (arg.equals("countdown") && emerg.isActive()) {
+            viewController.updateEmergencySeconds(emerg.getEmergencyCountdown());
+        } else if (arg.equals("finished")) {
+            viewController.endEmergency();
+        }
     }
 }

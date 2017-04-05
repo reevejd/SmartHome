@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:animateLayoutChanges="true"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/content_main"
@@ -18,9 +19,7 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/house"
-        android:layout_alignBottom="@+id/light1"
-        android:layout_alignEnd="@+id/light7" />
+        app:srcCompat="@drawable/house" />
 
 
     <android.support.design.widget.FloatingActionButton
@@ -92,7 +91,8 @@
         android:layout_alignTop="@id/toggleLights"
         android:layout_alignBottom="@id/toggleLights"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="11dp" />
+        android:layout_marginBottom="0dp" />
+
 
     <ImageView
         android:id="@+id/light0"
@@ -118,8 +118,9 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         app:srcCompat="@drawable/circleoff"
-        android:layout_alignTop="@+id/toggleDoors"
-        android:layout_toEndOf="@+id/door0" />
+        android:layout_alignBottom="@+id/toggleEmergency"
+        android:layout_toEndOf="@+id/door0"
+        android:layout_marginBottom="28dp" />
 
     <ImageView
         android:id="@+id/light2"

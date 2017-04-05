@@ -3,6 +3,7 @@ package ca.jamesreeve.smarthome;
 import android.content.Intent;
 import android.icu.text.DecimalFormat;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
@@ -77,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         emergencyController = EmergencyController.buildEmergencyController(this);
 
         startService(new Intent(this,LightSettingsService.class));
+        startService(new Intent(this,DoorSettingsService.class));
 
         toggleLights = (FloatingActionButton) findViewById(R.id.toggleLights);
         toggleLights.setOnClickListener(new View.OnClickListener() {
@@ -419,15 +422,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void displayEmergency(){
-        Toast.makeText(this, "Emergency Services Dispatched", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Police Dispatched", Toast.LENGTH_LONG).show();
+        emergencybutton.setText("Police ETA:\n ");
     }
 
     public void displayRepeatedEmergency(){
-        Toast.makeText(this, "Emergency Services Already Dispatched", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Police Already Dispatched", Toast.LENGTH_LONG).show();
     }
 
-    public void updateEmergencySeconds() {
-        // todo
+    public void updateEmergencySeconds(int secondsRemaining) {
+        emergencybutton.setText("Police ETA:\n "+secondsRemaining +" seconds");
+    }
+
+    public void endEmergency() {
+        emergencybutton.setText("Emergency");
+        if (!emergencyHidden) {
+            Toast.makeText(this, "Police Arrived", Toast.LENGTH_LONG).show();
+        };
+
     }
 
     @Override
@@ -444,14 +456,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
+        /*//noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             // for debugging // TODO: 4/4/2017
             temperatureController.setThermostat(40);
 
             return true;
-        }
-        else if(id == R.id.LightSettings){
+        }*/
+        if(id == R.id.LightSettings){
             Intent intent = new Intent(this, LightSettingsActivity.class);
             startActivity(intent);
         }

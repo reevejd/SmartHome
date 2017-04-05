@@ -9,6 +9,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.Observable;
+import java.util.Random;
 
 /**
  * Created by James Reeve on 4/4/2017.
@@ -16,14 +17,17 @@ import java.util.Observable;
 
 public class EmergencyState extends Observable {
 
+
+    Random random;
     FirebaseDatabase database;
     DatabaseReference emergencyStateRef, emergencyCountdownRef;
 
-    private Integer emergencyCountdown;
-    private Boolean active;
-    private Boolean simulationActive;
+    private volatile Integer emergencyCountdown;
+    private volatile Boolean active;
+    private volatile Boolean simulationActive;
 
     public EmergencyState() {
+        random = new Random();
         simulationActive = false;
         database = FirebaseDatabase.getInstance();
         emergencyStateRef = database.getReference("emergency/active");
@@ -35,7 +39,6 @@ public class EmergencyState extends Observable {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Log.d("emergency", "state listener function called");
-                //acknowledged = false;
                 active = ((Boolean) dataSnapshot.getValue());
                 if (active) {
                     Log.d("emergency", "state is active");
@@ -57,8 +60,14 @@ public class EmergencyState extends Observable {
                 Log.d("emergency", "countdown listener function called");
 
                 emergencyCountdown = ((Number) dataSnapshot.getValue()).intValue();
-                setChanged();
-                notifyObservers("countdown");
+                if (emergencyCountdown == 0 && active) {
+                    setChanged();
+                    notifyObservers("finished");
+                } else {
+                    setChanged();
+                    notifyObservers("countdown");
+                }
+
             }
 
             @Override
@@ -77,6 +86,8 @@ public class EmergencyState extends Observable {
         simulationActive = true;
         active = true;
         emergencyStateRef.setValue(true);
+        emergencyCountdownRef.setValue(16+random.nextInt(10));
+        Log.d("emergency", "set simulation active and active to true");
     }
 
    /* public void acknowledgeAlarm() {
@@ -101,13 +112,12 @@ public class EmergencyState extends Observable {
 
     public void setInactive() {
         active = false;
+        emergencyStateRef.setValue(false);
     };
 
     public void decrementTimer() {
         emergencyCountdown--;
+        emergencyCountdownRef.setValue(emergencyCountdown);
     }
 
-    /*public boolean isAcknowledged() {
-        return acknowledged;
-    }*/
 }
