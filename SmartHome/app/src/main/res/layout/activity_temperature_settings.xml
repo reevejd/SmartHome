@@ -7,34 +7,35 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
         android:text="Thermostat"
-        android:textColorLink="@android:color/holo_red_light"
         android:textSize="36sp"
-        tools:textColor="@android:color/holo_red_dark"
-        tools:textColorLink="@android:color/holo_red_dark"
-        android:layout_above="@+id/seekBar"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="53dp" />
+        android:textColor="#cc0000"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="28sp"
+        android:textSize="59sp"
         android:text="15"
-        android:layout_marginBottom="41dp"
-        android:layout_alignBottom="@+id/seekBar"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="32dp" />
 
     <SeekBar
         android:id="@+id/seekBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="111dp"
         android:max="30"
-        android:progress="15"
-        android:minHeight="200dp"
         android:maxHeight="20dp"
-        android:layout_centerVertical="true"
+        android:minHeight="200dp"
+        android:progress="15"
+        android:rotation="270"
+        android:progressDrawable="@drawable/custom_progress"
+        android:layout_below="@+id/textView4"
         android:layout_alignParentStart="true" />
 
 </RelativeLayout>
