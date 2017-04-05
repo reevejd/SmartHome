@@ -322,7 +322,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            //temperatureController.setThermostat(40);
+            temperatureController.setThermostat(40);
 
             return true;
         }
