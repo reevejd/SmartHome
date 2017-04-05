@@ -21,9 +21,10 @@ public class EmergencyState extends Observable {
 
     private Integer emergencyCountdown;
     private Boolean active;
-    //private Boolean acknowledged;
+    private Boolean simulationActive;
 
     public EmergencyState() {
+        simulationActive = false;
         database = FirebaseDatabase.getInstance();
         emergencyStateRef = database.getReference("emergency/active");
         emergencyCountdownRef = database.getReference("emergency/countdown");
@@ -49,7 +50,7 @@ public class EmergencyState extends Observable {
             }
         });
 
-        /* todo
+
         emergencyCountdownRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -64,7 +65,7 @@ public class EmergencyState extends Observable {
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });*/
+        });
     }
 
     public void initialDeactivateReplaceThisFunctionLater() {
@@ -73,6 +74,7 @@ public class EmergencyState extends Observable {
     }
 
     public void activate() {
+        simulationActive = true;
         active = true;
         emergencyStateRef.setValue(true);
     }
@@ -87,6 +89,22 @@ public class EmergencyState extends Observable {
 
     public boolean isActive() {
         return active;
+    }
+
+    public boolean simulationActive() {
+        return simulationActive;
+    };
+
+    public void deactivateSimulation() {
+        simulationActive = false;
+    }
+
+    public void setInactive() {
+        active = false;
+    };
+
+    public void decrementTimer() {
+        emergencyCountdown--;
     }
 
     /*public boolean isAcknowledged() {
