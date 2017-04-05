@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         emergencyController = EmergencyController.buildEmergencyController(this);
 
         startService(new Intent(this,LightSettingsService.class));
+        startService(new Intent(this,DoorSettingsService.class));
 
         toggleLights = (FloatingActionButton) findViewById(R.id.toggleLights);
         toggleLights.setOnClickListener(new View.OnClickListener() {
