@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ImageView[] doors = new ImageView[5];
 
     TextView tempdisplay;
+    ImageView tempicon;
 
     LightController lightController;
     static LightSettingsController lightSettingsController;
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     boolean lightsHidden = false;
     boolean doorsHidden = false;
+    boolean tempHidden = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +81,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
+        FloatingActionButton toggleTemp = (FloatingActionButton) findViewById(R.id.toggleTemp);
+        toggleTemp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toggleTemp();
+            }
+        });
+
+
+
         tempdisplay = (TextView) findViewById(R.id.tempdisplay);
+        tempicon = (ImageView) findViewById(R.id.tempicon);
 
         light0 = (ImageView) findViewById(R.id.light0);
         light0.setOnClickListener(this);
@@ -157,6 +170,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
     }
+
+    public void toggleTemp(){
+        if(tempHidden == true){
+            tempHidden = false;
+            tempdisplay.setVisibility(View.VISIBLE);
+            tempicon.setVisibility(View.VISIBLE);
+        }
+        else{
+            tempHidden = true;
+            tempdisplay.setVisibility(View.INVISIBLE);
+            tempicon.setVisibility(View.INVISIBLE);
+        }
+    }
+
+
 
 
     public void setLightDisplay(int index, Light.State state) {
