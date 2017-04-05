@@ -18,12 +18,12 @@ public class TemperatureSettingsActivity extends AppCompatActivity {
     SeekBar sb;
     TextView valuetxt;
 
-    protected void OnCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_temperature_settings);
 
 
-        /*sb = (SeekBar) findViewById(R.id.seekBar);
+        sb = (SeekBar) findViewById(R.id.seekBar);
         valuetxt = (TextView) findViewById(R.id.value);
 
         sb.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -42,7 +42,7 @@ public class TemperatureSettingsActivity extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar sb) {
 
             }
-        });*/
+        });
     }
 
 
