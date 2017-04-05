@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -245,12 +246,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void showTempSettings(View v){
         Log.d("temp","open menu");
-
+        Intent intent = new Intent(this, TemperatureSettingsActivity.class);
+        startActivity(intent);
     }
 
     public void setTemperatureDisplay(double value) {
 
         tempdisplay.setText(String.format("%.1f "+(char) 0x00B0+"C", value));
+    }
+
+    SeekBar sb;
+    TextView valuetxt;
+
+    protected void OnCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_temperature_settings);
+
+        sb = (SeekBar) findViewById(R.id.seekBar);
+        valuetxt = (TextView) findViewById(R.id.value);
+
+        sb.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar sb, int progress, boolean fromUser) {
+                valuetxt.setText(String.valueOf(progress));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar sb) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar sb) {
+
+            }
+        });
     }
 
     public void onClick(View v){

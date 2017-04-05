@@ -219,6 +219,7 @@
         android:layout_height="wrap_content"
         android:textSize="12sp"
         android:text="25°C"
+        android:clickable="true"
         android:onClick="showTempSettings"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/door4" />
@@ -231,6 +232,7 @@
         android:layout_below="@+id/tempdisplay"
         app:srcCompat="@drawable/thermometer"
         android:layout_above="@+id/light5"
+        android:clickable="true"
         android:onClick="showTempSettings"
         android:layout_alignEnd="@+id/tempdisplay" />
 
