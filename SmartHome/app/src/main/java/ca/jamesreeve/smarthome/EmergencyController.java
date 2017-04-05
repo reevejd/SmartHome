@@ -41,8 +41,9 @@ public class EmergencyController implements Observer{
         EmergencyState emerg = (EmergencyState) obs;
         if (arg.equals("start")) {
             viewController.displayEmergency();
-        } else if (arg.equals("countdown")) {
+        } /* todo
+        else if (arg.equals("countdown")) {
             viewController.updateEmergencySeconds();
-        }
+        }*/
     }
 }

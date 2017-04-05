@@ -28,6 +28,8 @@ public class EmergencyState extends Observable {
         emergencyStateRef = database.getReference("emergency/active");
         emergencyCountdownRef = database.getReference("emergency/countdown");
 
+        initialDeactivateReplaceThisFunctionLater();
+
         emergencyStateRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -47,6 +49,7 @@ public class EmergencyState extends Observable {
             }
         });
 
+        /* todo
         emergencyCountdownRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -61,7 +64,12 @@ public class EmergencyState extends Observable {
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });
+        });*/
+    }
+
+    public void initialDeactivateReplaceThisFunctionLater() {
+        active = false;
+        emergencyStateRef.setValue(false);
     }
 
     public void activate() {
