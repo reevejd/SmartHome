@@ -48,8 +48,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     EmergencyController emergencyController;
 
-
     TemperatureController temperatureController;
+    static TempSettingsController tempSettingsController;
 
     DoorController doorController;
     static DoorSettingsController doorSettingsController;
@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         lightSettingsController = LightSettingsController.buildLightSettingsController();
 
         temperatureController = TemperatureController.buildTemperatureController(this);
+        tempSettingsController = TempSettingsController.buildTempSettingsController();
 
         doorController = DoorController.buildDoorController(5, this);
         doorSettingsController = DoorSettingsController.buildDoorSettingsController();
@@ -80,6 +81,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         startService(new Intent(this,LightSettingsService.class));
         startService(new Intent(this,DoorSettingsService.class));
+        startService(new Intent(this,TempSettingsService.class));
 
         toggleLights = (FloatingActionButton) findViewById(R.id.toggleLights);
         toggleLights.setOnClickListener(new View.OnClickListener() {
@@ -112,8 +114,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 toggleEmergency();
             }
         });
-
-
 
         tempdisplay = (TextView) findViewById(R.id.tempdisplay);
         tempicon = (ImageView) findViewById(R.id.tempicon);

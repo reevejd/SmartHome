@@ -67,6 +67,14 @@
 
         </service>
 
+        <service
+            android:name=".TempSettingsService"
+            android:enabled="true"
+            android:stopWithTask="true"
+            android:exported="true">
+
+        </service>
+
         <activity android:name=".TempSettingsActivity"
             android:parentActivityName=".MainActivity">
 
