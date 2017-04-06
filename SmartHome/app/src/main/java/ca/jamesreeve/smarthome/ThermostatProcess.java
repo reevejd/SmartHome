@@ -31,11 +31,16 @@ public class ThermostatProcess implements Runnable {
             if (temperature.getSimulationActive()) {
                 Log.d("thermostat", "temp simulation activate");
                 Log.d("thermostat", "temperature : " + temperature.getValue());
-                if (Math.abs(temperature.getTarget()-temperature.getValue()) < 1) {
+                if (Math.abs(temperature.getTarget()-temperature.getValue()) < 0.15) {
                     temperature.setValue(temperature.getTarget());
                     temperature.setSimulationActive(false);
                 } else {
-                    double change = (temperature.getTarget() > temperature.getValue() ? 0.1 : -0.1);
+                    double change;
+                    if (Math.abs(temperature.getTarget()-temperature.getValue()) > 1.5) {
+                        change = (temperature.getTarget() > temperature.getValue() ? 1.0 : -1.0);
+                    } else {
+                        change = (temperature.getTarget() > temperature.getValue() ? 0.1 : -0.1);
+                    }
                     temperature.setValue(temperature.getValue()+change);
                     try {
                         Thread.sleep(1000);

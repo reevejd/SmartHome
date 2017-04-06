@@ -250,7 +250,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void showTempSettings(View v){
         Log.d("temp","open menu");
         Intent intent = new Intent(this, TemperatureSettingsActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent, 1);
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                temperatureController.setThermostat(Double.parseDouble(data.getStringExtra("setpoint")));
+            }
+        }
     }
 
     public void setTemperatureDisplay(double value) {
