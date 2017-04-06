@@ -36,15 +36,19 @@ public class TemperatureSettingsActivity extends AppCompatActivity {
 
 
         sb = (SeekBar) findViewById(R.id.seekBar);
+        sb.incrementProgressBy(1);
         valuetxt = (TextView) findViewById(R.id.value);
+
+
 
         database = FirebaseDatabase.getInstance();
         setpointRef = database.getReference("targettemperature");
         setpointRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                int target = ((Number) dataSnapshot.getValue()).intValue();
-                sb.setProgress(target);
+                Double target = ((Number) dataSnapshot.getValue()).doubleValue();
+                sb.incrementProgressBy(1);
+                sb.setProgress((int) (target*10));
                 valuetxt.setText(String.valueOf(target));
             }
 
@@ -61,7 +65,9 @@ public class TemperatureSettingsActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar sb, int progress, boolean fromUser) {
                 Log.d("val","temp");
-                valuetxt.setText(String.valueOf(progress));
+                Double d_progress = ((Number) progress).doubleValue() /10;
+                //progress = progress;
+                valuetxt.setText(String.valueOf(d_progress));
             }
 
             @Override

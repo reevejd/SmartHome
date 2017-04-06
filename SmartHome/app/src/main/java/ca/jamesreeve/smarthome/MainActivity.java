@@ -452,6 +452,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent intent = new Intent(this, DoorSettingsActivity.class);
             startActivity(intent);
         }
+        else if(id == R.id.TempSettings){
+            Intent intent = new Intent(this, TempSettingsActivity.class);
+            startActivity(intent);
+        }
 
         return super.onOptionsItemSelected(item);
     }

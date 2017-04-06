@@ -10,4 +10,8 @@
         android:id="@+id/DoorSettings"
         android:orderInCategory="100"
         android:title="Door Settings" />
+    <item
+        android:id="@+id/TempSettings"
+        android:orderInCategory="101"
+        android:title="Temperature Settings" />
 </menu>
