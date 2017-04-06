@@ -50,13 +50,19 @@
         <service
             android:name=".LightSettingsService"
             android:enabled="true"
+            android:stopWithTask="true"
             android:exported="true" />
 
-        <activity android:name=".TemperatureSettings" />
+        <activity android:name=".TemperatureSettings">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
 
         <service
             android:name=".DoorSettingsService"
             android:enabled="true"
+            android:stopWithTask="true"
             android:exported="true"></service>
     </application>
 
