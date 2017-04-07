@@ -2,12 +2,15 @@ package ca.jamesreeve.smarthome;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,6 +25,8 @@ public class TempSettingsActivity extends AppCompatActivity {
     EditText tv;
     TimePicker.OnTimeChangedListener timePickerListener;
     Switch.OnCheckedChangeListener switchListener;
+    TextWatcher textWatcher;
+    String recentVal;
 
     FirebaseDatabase database;
     DatabaseReference tempSettingsRef;
@@ -37,16 +42,43 @@ public class TempSettingsActivity extends AppCompatActivity {
         tv.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             public void onFocusChange(View v, boolean hasFocus) {
                 if(!hasFocus) {
+
+                    String text = tv.getText().toString();
+
+                    Double value = Double.parseDouble(recentVal);
+                    if (!text.toString().isEmpty()) {
+                        value = Double.parseDouble(text);
+                    }
+
+                    if (text.isEmpty()) {
+                        tv.setText(String.valueOf(recentVal));
+                        Toast.makeText(getApplicationContext(), "If you wish to disable this feature, use the \"active\" switch below", Toast.LENGTH_SHORT).show();
+                    } else if (value > 30.0) {
+                        Toast.makeText(getApplicationContext(), "The maximum allowed value is 30.0 degrees", Toast.LENGTH_SHORT).show();
+                        value = 30.0;
+                        tv.setText(String.valueOf(value));
+                    } else if (value < 0.0) {
+                        Toast.makeText(getApplicationContext(), "The minimum allowed value is 0.0 degrees", Toast.LENGTH_SHORT).show();
+
+                        value = 0.0;
+                    }
+
+                    Float floatvalue = value.floatValue();
+
                     tempSettingsRef.setValue(new TempSettingsHelper(
                             s.isChecked(),
                             tp.getCurrentHour(),
                             tp.getCurrentMinute(),
-                            Float.parseFloat(tv.getText().toString())
+                            floatvalue
                     ));
                 }
 
             }
         });
+
+
+
+
 
 
         database = FirebaseDatabase.getInstance();
@@ -61,7 +93,8 @@ public class TempSettingsActivity extends AppCompatActivity {
                 tp.setCurrentHour(((Number) dataSnapshot.child("changeH").getValue()).intValue());
                 tp.setCurrentMinute(((Number) dataSnapshot.child("changeM").getValue()).intValue());
                 s.setChecked((boolean) dataSnapshot.child("active").getValue());
-                tv.setText( dataSnapshot.child("temp").getValue().toString());
+                recentVal = String.format("%.1f", ((Number) dataSnapshot.child("temp").getValue()).doubleValue());
+                tv.setText(recentVal);
 
                 //add listener to text fiedl
                 tp.setOnTimeChangedListener(timePickerListener);
@@ -106,6 +139,8 @@ public class TempSettingsActivity extends AppCompatActivity {
 
         tp.setOnTimeChangedListener(timePickerListener);
         s.setOnCheckedChangeListener(switchListener);
+
+
 
     }
 }
